@@ -4,7 +4,7 @@
 [![Forks](https://img.shields.io/github/forks/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent)](https://github.com/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent/network/members)
 [![Stars](https://img.shields.io/github/stars/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent)](https://github.com/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent/stargazers)
 [![Issues](https://img.shields.io/github/issues/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent)](https://github.com/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent/issues)
-[![License](https://img.shields.io/github/license/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent)](https://github.com/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent)](https://github.com/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent/blob/main/License)
 
 
 > A **professional interactive FAQ chatbot** built with Flask that provides intelligent answers to common questions about Artificial Intelligence, Machine Learning, and Web Development — using NLP techniques including Cosine Similarity and keyword overlap matching.
