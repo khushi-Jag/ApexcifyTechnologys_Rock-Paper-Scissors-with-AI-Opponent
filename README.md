@@ -1,13 +1,15 @@
-# 🤖 FAQ Chatbot — AI & Technology Concepts
+# 🎮 Rock Paper Scissors — AI Opponent
 
 [![Contributors](https://img.shields.io/github/contributors/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent)](https://github.com/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent/graphs/contributors)
 [![Forks](https://img.shields.io/github/forks/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent)](https://github.com/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent/network/members)
 [![Stars](https://img.shields.io/github/stars/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent)](https://github.com/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent/stargazers)
 [![Issues](https://img.shields.io/github/issues/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent)](https://github.com/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent/issues)
-[![License](https://img.shields.io/github/license/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent)](https://github.com/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent/blob/main/License)
+[![License](https://img.shields.io/github/license/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent)](https://github.com/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent/blob/main/LICENSE)
 
+> A **Python-based Rock Paper Scissors game** featuring an AI opponent with **adaptive move prediction** — the AI learns your patterns and predicts your next move to beat you.
 
-> A **professional interactive FAQ chatbot** built with Flask that provides intelligent answers to common questions about Artificial Intelligence, Machine Learning, and Web Development — using NLP techniques including Cosine Similarity and keyword overlap matching.
+🌐 **[Explore the docs »](#)**
+🚀 **[View Demo](#)** · 🐛 **[Report Bug](#)** · 🌟 **[Request Feature](#)**
 
 ---
 
@@ -15,11 +17,10 @@
 
 * [About The Project](#-about-the-project)
 * [Key Features](#-key-features)
-* [Built With](#-built-with)
 * [How It Works](#-how-it-works)
-* [Project Structure](#-project-structure)
 * [Getting Started](#-getting-started)
 * [Usage](#-usage)
+* [Project Structure](#-project-structure)
 * [Contributing](#-contributing)
 * [License](#-license)
 * [Contact](#-contact)
@@ -28,19 +29,21 @@
 
 ## 💡 About The Project
 
-The **FAQ Chatbot** is an NLP-powered question-answering system that intelligently matches user queries to the most relevant answer from a curated knowledge base covering AI, ML, and Web Development concepts.
+This is not your average Rock Paper Scissors game. Instead of a purely random AI opponent, this project implements a **probability-based pattern learning system** that tracks your move transitions and predicts what you are likely to play next.
 
-Unlike simple keyword matching systems, this chatbot uses a **hybrid scoring approach** — combining Cosine Similarity for semantic matching with keyword overlap for direct term matching — to deliver confident, accurate responses even when the user's phrasing doesn't exactly match the stored questions.
+The AI starts with random choices but gradually learns your tendencies — if you tend to play **paper after rock**, the AI will notice and counter accordingly. The longer you play, the smarter the AI becomes.
 
 ---
 
 ## ✨ Key Features
 
-* **Intelligent Matching** – Hybrid scoring using Cosine Similarity (65%) and Keyword Overlap (35%).
-* **NLP Preprocessing** – Stopword removal, synonym expansion (e.g. `"ML"` → `"Machine Learning"`), and text normalization.
-* **Confidence Scoring** – Responses categorized as High, Medium, or Low confidence.
-* **Dynamic Suggestions** – Helpful fallback suggestions when no confident match is found.
-* **Modern Glassmorphism UI** – Clean, responsive interface built with vanilla CSS.
+* **Adaptive AI Opponent** – Learns your move patterns using transition history tracking.
+* **Probability-Based Prediction** – AI predicts your next move based on what you played most after your last move.
+* **Score Tracking** – Live score display across all rounds (Win / Loss / Tie).
+* **AI Transparency** – Each round shows the AI's reasoning (e.g. *"AI predicted you might play 'paper' after 'rock'"*).
+* **Graceful Learning Phase** – Falls back to random choice until enough data is collected.
+* **Zero Dependencies** – Uses only Python's built-in `random` module.
+* **Clean Terminal UI** – Simple, readable round-by-round output.
 
 ---
 
@@ -49,76 +52,53 @@ Unlike simple keyword matching systems, this chatbot uses a **hybrid scoring app
 | Technology | Purpose |
 |---|---|
 | Python 3.8+ | Core language |
-| Flask | Web framework & backend server |
-| HTML5 / CSS3 | Frontend UI (Glassmorphism design) |
-| JavaScript (ES6+) | Frontend interactivity |
-| Math (Cosine Similarity) | Semantic similarity scoring |
-| Re (Regex) | Text cleaning & normalization |
-
-> No external NLP libraries required — pure Python standard library implementation.
+| `random` module | Random choice generation (learning phase) |
+| Dictionary-based transition matrix | Pattern learning & move prediction |
 
 ---
 
 ## 🧠 How It Works
 
-User input goes through a multi-stage NLP pipeline before being matched:
-
-### Processing Pipeline
-
-```
-User Query
-     │
-     ▼
-1. Normalization (lowercase + remove special chars)
-     │
-     ▼
-2. Synonym Mapping ("ML" → "Machine Learning", "AI" → "Artificial Intelligence")
-     │
-     ▼
-3. Vectorization (word frequency vectors)
-     │
-     ▼
-4. Hybrid Scoring:
-   ├── Cosine Similarity  (65% weight) — semantic similarity
-   └── Keyword Overlap    (35% weight) — direct term matching
-     │
-     ▼
-5. Confidence Classification (High / Medium / Low)
-     │
-     ▼
-Best Match Answer  OR  Dynamic Suggestions
-```
-
-### Scoring Breakdown
-
-| Method | Weight | Description |
-|---|---|---|
-| **Cosine Similarity** | 65% | Measures angle between query and FAQ vectors |
-| **Keyword Overlap** | 35% | Counts direct word matches with significant terms |
-
-### Confidence Levels
-
-| Score Range | Confidence | Response |
-|---|---|---|
-| High | Best match returned | Direct answer |
-| Medium | Partial match found | Answer with disclaimer |
-| Low | No strong match | Dynamic suggestions shown |
-
----
-
-## 📁 Project Structure
+### Transition History Matrix
+The AI maintains a dictionary tracking how often you switch between moves:
 
 ```
-FAQ-Chatbot/
-│
-├── app.py              # Main Flask server + NLP logic
-├── static/
-│   └── style.css       # Glassmorphism UI styles
-├── templates/
-│   └── index.html      # Main frontend template
-├── requirements.txt    # Python dependencies
-└── README.md
+After playing "rock", you played:
+  → rock:     3 times
+  → paper:    7 times  ← most frequent
+  → scissors: 1 time
+
+AI Prediction: you will play "paper" next
+AI Counter:    plays "scissors" to beat it
 ```
+
+### AI Decision Flow
+
+```
+User plays a move
+        │
+        ▼
+First round? (no history)
+  Yes → Random choice
+        │
+        ▼
+Any transition data available?
+  No  → Random choice (learning phase)
+        │
+        ▼
+Find most frequent move after last user move
+        │
+        ▼
+Play the counter move to beat the prediction
+```
+
+### AI Behavior Table
+
+| Situation | AI Behavior |
+|---|---|
+| First round (no data) | Random choice |
+| Learning phase (no history yet) | Random choice |
+| Enough history available | Predicts your next move and counters it |
 
 ---
 
@@ -133,52 +113,68 @@ FAQ-Chatbot/
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/khushi-Jag/FAQ-Chatbot.git
-cd FAQ-Chatbot
+git clone https://github.com/khushi-Jag/ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent.git
+cd ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent
 ```
 
-**2. Create a virtual environment** *(recommended)*
+**2. Run the game**
 
 ```bash
-python -m venv venv
-
-# Windows
-venv\Scripts\activate
-
-# macOS / Linux
-source venv/bin/activate
+python main.py
 ```
 
-**3. Install dependencies**
-
-```bash
-pip install flask
-```
+> No external packages needed — runs out of the box with standard Python.
 
 ---
 
 ## 📝 Usage
 
-**1. Run the application**
+```
+=================================
+ Rock Paper Scissors AI Game
+=================================
+Type rock, paper, or scissors
+Type exit to stop the game
 
-```bash
-python app.py
+----- Round 1 -----
+Your move: rock
+AI chose: scissors
+AI Logic: AI used random choice (no data yet)
+Result: You win this round!
+Score -> You: 1 | AI: 0 | Ties: 0
+
+----- Round 2 -----
+Your move: paper
+AI chose: scissors
+AI Logic: AI predicted you might play 'paper' after 'rock'
+Result: AI wins this round!
+Score -> You: 1 | AI: 1 | Ties: 0
+
+====== FINAL RESULT ======
+You: 1
+AI: 1
+Ties: 0
+Thanks for playing!
 ```
 
-**2. Open in browser**
+**Valid Commands:**
+
+| Input | Action |
+|---|---|
+| `rock` | Play rock |
+| `paper` | Play paper |
+| `scissors` | Play scissors |
+| `exit` or `quit` | End game and see final score |
+
+---
+
+## 📁 Project Structure
 
 ```
-http://127.0.0.1:5000
-```
-
-**3. Ask a question**
-
-Type any question related to AI, Machine Learning, or Web Development:
-
-```
-What is deep learning?
-How does NLP work?
-What is the difference between AI and ML?
+ApexcifyTechnologys_Rock-Paper-Scissors-with-AI-Opponent/
+│
+├── main.py       # Game logic, AI prediction engine & main loop
+└── README.md
 ```
 
 ---
@@ -223,5 +219,5 @@ GitHub: [https://github.com/khushi-Jag](https://github.com/khushi-Jag)
 
 ## 🙏 Acknowledgments
 
-* [Flask Documentation](https://flask.palletsprojects.com/)
+* Python Documentation
 * Open Source Community ❤️
